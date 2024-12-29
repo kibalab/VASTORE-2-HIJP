@@ -1,0 +1,29 @@
+{
+    "name": "VA-STORE to HIJP Extension",
+    "version": "1.0",
+    "manifest_version": 3,
+    "description": "VA-STORE 주문 정보를 HIJP 배송신청 폼에 자동으로 입력해주는 확장 프로그램입니다.",
+    "permissions": [
+      "activeTab",
+      "scripting",
+      "storage"
+    ],
+    "host_permissions": [
+      "https://va-store.jp/*",
+      "https://www.hijp.co.kr/*"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://va-store.jp/account/orders/*"],
+        "js": ["contentVaStore.js"]
+      },
+      {
+        "matches": ["https://www.hijp.co.kr/delivery/apply_jp*"],
+        "js": ["contentHijp.js"]
+      }
+    ]
+}
+  
